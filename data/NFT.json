@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Nyan Cat",
+    "description": "This is a picture of nyan cat that is made back in 2011",
+    "price": 800,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/id/e/ed/Nyan_cat_250px_frame.PNG",
+    "availability": true
+  },
+  {
+    "name": "A Reflective Fantasy",
+    "description": "In terms of superficial achievements, the artist has made it.\nRecognition achieved, money rolling in, love coming from all corners, yet one thing is missing: happiness.\nIt cannot be bought, nor drawn.\nIt must be figured out, and it starts from within.\nThe artist floats on an endless sea. It begins in silence. The feeling, the thinking.\nTheir shadow warps the water. A yellow light expands on the blue horizon.\nThey now have to learn how to swim there.",
+    "price": 5,
+    "imageUrl": "https://f8n-ipfs-production.imgix.net/QmT9FpDQStdXSFm8WBu7Cn7EHEGHRb4GrS6864TVj8fZqA/nft.jpg",
+    "availability": true
+  },
+  {
+    "name": "Cryptoscape_0004",
+    "description": "Cryptoscapes are photos captured on film from around the world,\ndigitally painted with emotive color schemes. This is the forth of the series.",
+    "price": 3,
+    "imageUrl": "https://f8n-ipfs-production.imgix.net/QmZ9hkzrUoRH8APHV5jQHQCQusmqtRrqEp2BxgTLAtTb2T/nft.png",
+    "availability": true
+  },
+  {
+    "name": "Pollinator",
+    "description": "",
+    "price": 1,
+    "imageUrl": "https://f8n-ipfs-production.imgix.net/QmWvLkxDyYkS3WawK3v3iv8fGt1BnQk2U4psSN6mnsYdao/nft.jpg",
+    "availability": true
+  },
+  {
+    "name": "Fame",
+    "description": "1 of 1.",
+    "price": 132,
+    "imageUrl": "https://f8n-ipfs-production.imgix.net/QmT67ddVww4CdHBvE5SYwronVPthzna3D2vWEiJXCqUzFS/nft.png",
+    "availability": true
+  },
+  {
+    "name": "Cybernetic evolution",
+    "description": "My suggestion about how the human species might evolve in thousands of years.\nMade in 2018.\n1562x2000pix.",
+    "price": 571,
+    "imageUrl": "https://f8n-ipfs-production.imgix.net/QmZECnusbEL2YC3CDcJ54Ze9faRQ9Denc62nFsQrhTZt7M/nft.jpg?q=80&w=1680&fit=fill&max-h=1680",
+    "availability": true
+  },
+  {
+    "name": "The NFT Merchant",
+    "description": "Sale of CryptoPunk #7523 at NativelyDigital NFT auction – \nsetting a new world auction record for a single CryptoPunk, \ndespite many people outside of nft space were thinking nft's are dead",
+    "price": 332,
+    "imageUrl": "https://f8n-ipfs-production.imgix.net/QmShJze9vKruow3uwGauQXmjrv8ainEw1w9gn8GdEGNChD/nft.jpg?q=80&w=1680&fit=fill&max-h=1680",
+    "availability": true
+  }
+]

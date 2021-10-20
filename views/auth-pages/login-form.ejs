@@ -1,0 +1,40 @@
+<%- include('../partial/header.ejs',{title: 'Login'}) %>
+<%-include('../partial/navbar.ejs')%>
+<div class="container">
+  <br />
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px">
+      <h4 class="card-title mt-3 text-center">Login Form</h4>
+      <br />
+      <form action="/login" method="post">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-control" name="username" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </article>
+    <div class="alert alert-secondary" role="alert">
+      Don't have and account yet? Click <a href="/register" class="alert-link">Here.</a> to register.
+    </div>
+  </div>
+  <br />
+  <% if(err) {%>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <%=err%>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <% } %>
+</div>
+<%- include('../partial/footer.ejs') %>
