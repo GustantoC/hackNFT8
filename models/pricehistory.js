@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      PriceHistory.belongsTo(models.NFT, {foreignKey: "NFTId"})
+      PriceHistory.belongsTo(models.User, {foreignKey: "buyerId"})
     }
     formatDateBought(){
       return formatDate(this.time)
