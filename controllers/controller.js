@@ -1,5 +1,6 @@
 const { NFT, User, PriceHistory } = require('../models')
 const {Op} = require('sequelize')
+const formatPrice  = require('../helpers/formatPrice')
 
 class Controller {
   static landingPage(req,res){
@@ -46,6 +47,7 @@ class Controller {
   }
   static showNFTDetail(req, res) {
     let nftId = Number(req.params.id)
+    let dataNFT = {}
     const opt = {
       where: {
         id: nftId
@@ -55,8 +57,17 @@ class Controller {
       }]
     }
     NFT.findOne(opt)
-      .then(dataNFT => {
-        res.render('nftDetails', { dataNFT })
+      .then(data => {
+        dataNFT = data
+        return PriceHistory.findAll({
+          where:{
+            NFTId: dataNFT.id
+          }
+        })
+      })
+      .then(data => {
+        dataNFT.PriceHistory = data
+        return res.render('nftDetails', { dataNFT, formatPrice })
       })
       .catch(err => {
         res.send(err.message)

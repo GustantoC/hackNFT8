@@ -1,4 +1,5 @@
 'use strict';
+const formatDate = require('../helpers/formatDate')
 const {
   Model
 } = require('sequelize');
@@ -10,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+    }
+    formatDateBought(){
+      return formatDate(this.time)
     }
   };
   PriceHistory.init({

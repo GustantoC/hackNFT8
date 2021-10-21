@@ -1,8 +1,9 @@
-<%- include("./partial/header",{title: 'Home Page'}) %>
+<%- include("./partial/header",{title: 'Add NFT'}) %>
+<%- include("./partial/navbar") %>
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 <div class="container mt-5">
 
-<h1>Sell Your NTF!!</h1><br>
+<h1>Sell Your NFT!!</h1><br>
     <form action="/nft/add" method="POST">
 
     <div class="form-group mb-5">
@@ -22,7 +23,7 @@
         <label for="image">Image</label>
         <input type="name" id="image" name="imageUrl"  class="form-control"required autofocus >
     </div>
-    <label for="description">description</label>
+    <label for="description">Description</label>
     <textarea name="description" id="description"></textarea>
     <script>
             CKEDITOR.replace('description');
