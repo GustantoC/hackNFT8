@@ -33,7 +33,7 @@
 </style>
 
 <div class="container mt-5">
-    <form class="form-signin" action="/nft/<%= data.username%>" method="POST">
+    <form class="form-signin" action="/nft/detail/<%= data.username%>" method="POST">
         <h1 class="h3 mb-3 font-weight-normal mb-5">Edit Profile</h1>
         
         <div class="form-group">
@@ -61,7 +61,7 @@
         <% dataNft.forEach(el => {%>
         <tr>
           <td><%=el.name%></td>
-          <td><%=formatPrice(el.priceAt)%></td>
+          <td><%=formatPrice(el.price)%></td>
         </tr>
         <% }) %> 
       </tbody>
