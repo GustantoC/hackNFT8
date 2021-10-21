@@ -41,7 +41,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= el.name %></h5>
                         <div class="text-truncate" style="margin-top: 30px;height: 25%">
-                            <i><%= el.description %></i>
+                            <i><%- el.description %></i>
                         </div>
                         <br>
                         <p>
@@ -50,7 +50,7 @@
                         <br>
                         <a href="/nft/<%=el.id%>" class="btn btn-primary">See Detail</a>
                         <%if(userData.role == 'admin'){%>
-                          <a href="" class="btn btn-danger">Delete</a>
+                          <a href="/nft/<%=el.id%>/delete" class="btn btn-danger">Delete</a>
                         <%}%>
                     </div>
                 </div>

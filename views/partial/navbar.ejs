@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">🖼HackNFT8</a>
+    <a class="navbar-brand" href="/nft">🖼HackNFT8</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -39,7 +39,7 @@
               <%=userData.username%>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="/nft/<%= userData.username %>">Profile</a></li>
               <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>
           </li>
