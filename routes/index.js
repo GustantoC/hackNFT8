@@ -34,6 +34,7 @@ router.post('/login',UserController.loginPost)
 router.get('/logout',UserController.getLogout)
 
 router.get('/nft/:id',Controller.showNFTDetail)
-router.post('/nft/:id/availability',Controller.changeNFTAvailability)
+router.post('/nft/:id/edit',Controller.changeNFT)
+router.get('/nft/:id/buy', Controller.buyNFT)
 
 module.exports = router
