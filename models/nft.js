@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       NFT.belongsTo(models.User,{foreignKey: "UserId"})
     }
+
+    convertPrice(){
+      return `© ${this.price}`
+    }
   };
   NFT.init({
     name: DataTypes.STRING,
