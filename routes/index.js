@@ -38,6 +38,9 @@ router.get('/logout',UserController.getLogout)
 router.get('/nft/add', Controller.addNft)
 router.post('/nft/add', Controller.postAddNft)
 
+router.get('/nft/:username', Controller.editUser)
+router.post('/nft/:username', Controller.postEditUser)
+
 
 router.get('/nft/:id',Controller.showNFTDetail)
 router.post('/nft/:id/edit',Controller.changeNFT)

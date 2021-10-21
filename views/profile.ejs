@@ -1,0 +1,72 @@
+<%- include("./partial/header",{title: 'Add NFT'}) %>
+<%- include("./partial/navbar") %>
+<style>
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+    }
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+    .form-signin .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+</style>
+
+<div class="container mt-5">
+    <form class="form-signin" action="/nft/<%= data.username%>" method="POST">
+        <h1 class="h3 mb-3 font-weight-normal mb-5">Edit Profile</h1>
+        
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" value="<%= data.username %>" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" id="inputEmail" name="email" class="form-control" value="<%= data.email %>" required>
+        </div>
+
+
+        <button class="btn btn-lg btn-primary btn-block mt-5" type="Save">Save Profile</button>
+    </form>
+</div>
+<div class="card-body">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">NFT</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% dataNft.forEach(el => {%>
+        <tr>
+          <td><%=el.name%></td>
+          <td><%=formatPrice(el.priceAt)%></td>
+        </tr>
+        <% }) %> 
+      </tbody>
+    </table>
+    
+  </div>
+
+<%- include("./partial/footer") %>
