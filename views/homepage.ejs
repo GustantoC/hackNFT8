@@ -1,4 +1,4 @@
-<%- include('./partial/header.ejs',{title: 'Home Page'}) %> 
+<%- include('./partial/header.ejs',{title: 'Home Page'}) %>
 <%-include('./partial/navbar.ejs')%>
 <h1>this is the home page</h1>
 <div class="row mt-5">
@@ -44,7 +44,12 @@
                         <div style="margin-top: 30px;">
                             <%- el.description %>
                         </div>
-                        <a href="" class="btn btn-primary">See Detail</a>
+                        <p>
+                            availability: <%if(el.availability){%>Yes<% }else{ %>No<% } %>
+                         
+                        </p>
+                        <br>
+                        <a href="/nft/<%=el.id%>" class="btn btn-primary">See Detail</a>
                         <a href="" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
@@ -53,3 +58,4 @@
     <% }) %>
 </div>
 <%- include('./partial/footer.ejs') %> 
+

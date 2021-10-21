@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="/nft">Home</a>
         </li>
         <div class="d-flex">
           <%if(userData.userId){%>
@@ -28,7 +28,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Profile
+              <%=userData.username%>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="#">Profile</a></li>

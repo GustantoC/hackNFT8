@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       NFT.belongsTo(models.User,{foreignKey: "UserId"})
     }
+
+    convertPrice(){
+      return `© ${this.price}`
+    }
   };
   NFT.init({
     name: DataTypes.STRING,
@@ -23,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks:{
       beforeCreate:(nft,options)=>{
-        
+        nft.availability = true
       }
     },
     sequelize,
