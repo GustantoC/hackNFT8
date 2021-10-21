@@ -175,7 +175,7 @@ class Controller {
         })
       })
       .then(data => {
-        res.render("profile", { dataNft, data });
+        res.render("profile", { dataNft, data, formatPrice });
       })
       .catch(err => {
         console.log(err);
