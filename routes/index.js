@@ -4,7 +4,7 @@ const UserController = require('../controllers/UserController')
 
 const session = require('express-session')
 const isLoggedIn = require('../middlewares/isLoggedIn')
-const isNotLoggedIn = require('../middlewares/isNotLoggedIn')
+const isAdmin = require('../middlewares/isAdmin')
 
 router.use(session({
   secret: 'hackNFT8Secret',
@@ -35,16 +35,16 @@ router.get('/login',UserController.loginForm)
 router.post('/login',UserController.loginPost)
 router.get('/logout',UserController.getLogout)
 
-router.get('/nft/add', Controller.addNft)
-router.post('/nft/add', Controller.postAddNft)
+router.get('/nft/add',isAdmin, Controller.addNft)
+router.post('/nft/add',isAdmin, Controller.postAddNft)
 
-router.get('/nft/detail/:username', Controller.editUser)
-router.post('/nft/detail/:username', Controller.postEditUser)
+router.get('/nft/detail/:username', isLoggedIn , Controller.editUser)
+router.post('/nft/detail/:username', isLoggedIn ,Controller.postEditUser)
 
 router.get('/nft/:id',Controller.showNFTDetail)
-router.post('/nft/:id/edit',Controller.changeNFT)
-router.get('/nft/:id/buy', Controller.buyNFT)
-router.get('/nft/:id/delete', Controller.deleteNft)
+router.post('/nft/:id/edit', isLoggedIn ,Controller.changeNFT)
+router.get('/nft/:id/buy', isLoggedIn , Controller.buyNFT)
+router.get('/nft/:id/delete', isAdmin , Controller.deleteNft)
 
 
 

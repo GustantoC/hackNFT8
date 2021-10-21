@@ -2,7 +2,8 @@ function isLoggedIn(req, res, next) {
   if(req.session.userId){
     next();
   } else {
-    res.redirect('/login')
+    const err = "You're not logged in"
+    res.redirect(`/login?err=${err}`)
   }
 }
 

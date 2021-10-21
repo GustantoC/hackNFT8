@@ -6,9 +6,11 @@ class Controller {
   static landingPage(req, res) {
     res.render('landingPage')
   }
+
   static showHomePage(req, res) {
     const search = req.query.search;
     const sort = req.query.sort;
+    let notif = req.query.notif;
     console.log(req.query);
     let opt = {
       include: User,
@@ -25,10 +27,13 @@ class Controller {
     } else if (sort === "mostRecent") {
       opt.order = [["createdAt", "DESC"]]
     }
+    if(!notif){
+      notif = false
+    }
 
     NFT.findAll(opt)
       .then((data) => {
-        res.render('homepage', { data, session: req.session })
+        res.render('homepage', { data, session: req.session, notif })
       })
       .catch((err) => {
         res.send(err)
@@ -45,8 +50,13 @@ class Controller {
         res.send(err.message)
       })
   }
+
   static showNFTDetail(req, res) {
     let nftId = Number(req.params.id)
+    let notif = ''
+    if(req.query){
+      notif = req.query.notif
+    }
     let dataNFT = {}
     const opt = {
       where: {
@@ -68,7 +78,7 @@ class Controller {
       })
       .then(data => {
         dataNFT.PriceHistory = data
-        return res.render('nftDetails', { dataNFT, formatPrice })
+        return res.render('nftDetails', { dataNFT, formatPrice ,notif })
       })
       .catch(err => {
         res.send(err.message)
@@ -95,7 +105,8 @@ class Controller {
       }
     })
       .then(data => {
-        res.redirect(`/nft/${nftId}`)
+        const msg = "Success! data has been saved"
+        res.redirect(`/nft/${nftId}?notif=${msg}`)
       })
       .catch(err => {
         return res.send(err)
@@ -108,7 +119,8 @@ class Controller {
     let input = { name, price, imageUrl, description, UserId }
     NFT.create(input)
       .then((data) => {
-        res.redirect('/nft')
+        const msg = "Successfully added NFT"
+        res.redirect(`/nft?notif=${msg}`)
       })
       .catch((err) => {
         res.send(err)
@@ -145,7 +157,8 @@ class Controller {
           return PriceHistory.create(newPriceHistory)
         })
         .then(data => {
-          res.redirect(`/nft/${nftId}`)
+          const msg = "Congratulations! you own this NFT now"
+          res.redirect(`/nft/${nftId}?notif=${msg}`)
         })
         .catch(err => {
           res.send(err)
@@ -158,8 +171,10 @@ class Controller {
 
   static editUser(req, res) {
     const username = req.params.username;
-    console.log('ini laman edit');
-    console.log(req.session);
+    let notif = ''
+    if(req.query){
+      notif = req.query.notif
+    }
     let dataNft = {}
     NFT.findAll({
       where: {
@@ -175,7 +190,7 @@ class Controller {
         })
       })
       .then(data => {
-        res.render("profile", { dataNft, data, formatPrice });
+        res.render("profile", { dataNft, data,formatPrice,notif });
       })
       .catch(err => {
         console.log(err);
@@ -185,13 +200,10 @@ class Controller {
   }
 
   static postEditUser(req, res) {
-    // const username = req.params.username;
-    // const id = Profile.UserId;
-    console.log(req.session);
-    const { name, email } = req.body;
+    const { username, email } = req.body;
     console.log(req.body);
     const input = {
-      username: name,
+      username,
       email
     }
     console.log("profile", input);
@@ -211,9 +223,9 @@ class Controller {
         )
       })
       .then((user) => {
-        // console.log(data);
-        req.session.username = name
-        res.redirect(`/nft/${name}`);
+        let msg = "Your data has been saved successfully"
+        req.session.username = username
+        res.redirect(`/nft/detail/${username}?notif=${msg}`);
       })
       .catch(err => {
         res.send(err);
@@ -235,7 +247,8 @@ class Controller {
         })
       })
       .then((data) => {
-        res.redirect('/nft')
+        let msg = "Successfully deleted NFT"
+        res.redirect(`/nft?notif=${msg}`)
       })
       .catch((err) => {
         res.send(err)

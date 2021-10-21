@@ -2,6 +2,17 @@
 <%-include('./partial/navbar.ejs')%>
 <br />
 <div class="container">
+  <% if(notif) {%>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%=notif%>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    <% } %>
   <div class="card bg-light">
     <article class="card-body" style="max-width: 800px">
       <a href="<%=dataNFT.imageUrl%>">

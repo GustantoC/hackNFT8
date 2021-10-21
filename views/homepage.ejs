@@ -1,6 +1,17 @@
 <%- include('./partial/header.ejs',{title: 'Home Page'}) %>
 <%-include('./partial/navbar.ejs')%>
 <div class="container">
+  <% if(notif) {%>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%=notif%>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    <% } %>
 <div class="row mt-5">
     <div class="col-11">
         <form action="/nft" method="get">
