@@ -155,5 +155,25 @@ class Controller {
       res.redirect(`/login?err=${err}`)
     }
   }
+
+  static deleteNft(req, res) {
+    let id = req.params.id
+    PriceHistory.destroy({where:{
+      NFTId : id
+    }})
+    .then((data)=>{
+     return NFT.destroy({
+        where:{
+          id: +id
+        }
+      })
+    })
+    .then((data)=>{
+      res.redirect('/nft')
+    })
+    .catch((err)=>{
+      res.send(err)
+    })
+    }
 }
 module.exports = Controller;

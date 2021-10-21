@@ -42,5 +42,7 @@ router.post('/nft/add', Controller.postAddNft)
 router.get('/nft/:id',Controller.showNFTDetail)
 router.post('/nft/:id/edit',Controller.changeNFT)
 router.get('/nft/:id/buy', Controller.buyNFT)
+router.get('/nft/:id/delete', Controller.deleteNft)
+
 
 module.exports = router
