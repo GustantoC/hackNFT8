@@ -15,8 +15,16 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/nft">Home</a>
+          <a class="nav-link active" aria-current="page" href="/nft">NFTs</a>
         </li>
+
+        <%if(userData.role == 'admin'){%>
+          <li class="nav-item">
+            <a class="nav-link active" href="/nft/add">Add NFT</a>
+          </li>
+        <%}%>
+        
+
         <div class="d-flex">
           <%if(userData.userId){%>
           <li class="nav-item dropdown me-2">
@@ -35,11 +43,10 @@
               <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>
           </li>
-          <a lass="nav-link active" href="/nft/add">add NFT</a>
-        
+
 
           <%} else {%>
-            <a class="nav-link" href="/login">Login/Register</a>
+          <a class="nav-link" href="/login">Login/Register</a>
           <%}%>
         </div>
       </ul>

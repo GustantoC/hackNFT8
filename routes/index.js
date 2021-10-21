@@ -26,7 +26,7 @@ router.use(function(req, res, next) {
 });
 
 router.get('/', Controller.landingPage)
-router.get('/nfT', Controller.showHomePage)
+router.get('/nft', Controller.showHomePage)
 
 
 router.get('/register',UserController.registerForm)

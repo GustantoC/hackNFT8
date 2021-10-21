@@ -37,10 +37,17 @@
             <input type="password" class="form-control" name="password">
           </div>
 
-          <!-- GANTI JADI OPTIONS -->
           <div class="mb-3">
             <label class="form-label">Role</label>
-            <input type="text" class="form-control" name="role">
+            <br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="adminBox" value="admin" name="role">
+              <label class="form-check-label" for="adminBox">admin</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="userBox" value="user" name="role" checked>
+              <label class="form-check-label" for="userBox">user</label>
+            </div>
           </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>
