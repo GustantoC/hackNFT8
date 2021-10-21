@@ -36,7 +36,16 @@
       </h5>
     <% } %> 
   <% } else { %>
-    <h5>Sell Availability : <%if(dataNFT.availability){%>Yes<% }else{ %>No<% } %></h5>
+    <h5>Sell Availability : <%if(dataNFT.availability){%>
+      Yes
+      <br>
+      <% if(userData.userId) {%> 
+        <a href="/nft/<%=dataNFT.id%>/buy" class="btn btn-primary">Buy this NFT</a>
+      <% } %> 
+    <% }else{ %>
+      No
+    <% } %>
+    </h5>
   <% } %>
 </div>
 <%- include('./partial/footer.ejs') %>
