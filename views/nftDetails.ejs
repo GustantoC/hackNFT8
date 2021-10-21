@@ -11,33 +11,42 @@
   <br>
   <p><%=dataNFT.description%></p>
   <br>
-  <h5>Price : <%=dataNFT.convertPrice()%></h5>
-  <br>
   <h5>Owner : <%if(dataNFT.User){%><%=dataNFT.User.username%><%}else{%><span style="color:white; background-color: black;">None</span><%}%></h5>
   <br>
   <%if(dataNFT.User) { %>
     <% if(dataNFT.User.id == userData.userId) { %>
-      <form action="/nft/<%=dataNFT.id%>/availability" method="post">
+      <form action="/nft/<%=dataNFT.id%>/edit" method="post">
+        <h5>Price : <input type="number" name="price" value="<%=dataNFT.price%>"></h5>
+        <br>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" name="avaicheck" <%= dataNFT.availability ? "checked" : "" %> id="availableCheck"/>
           <label class="form-check-label" for="availableCheck"><h5>Available to sell?</h5></label>
           <br>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Change</button>
       </form>
     <% } else { %>
-      <h5>Sell Availability : <%if(dataNFT.availability){%>
+      <h5>Price : <%=dataNFT.convertPrice()%></h5>
+      <br>
+      <h5>Sell Availability : 
+      <%if(dataNFT.availability){%>
         Yes
         <br>
-        <a href="/nft/<%=dataNFT.id%>/buy" class="btn btn-primary">Buy this NFT</a>
+        <br>
+        <% if(userData.userId) {%> 
+          <a href="/nft/<%=dataNFT.id%>/buy" class="btn btn-primary">Buy this NFT</a>
+        <% } %> 
       <% }else{ %>
         No
       <% } %>
       </h5>
     <% } %> 
   <% } else { %>
-    <h5>Sell Availability : <%if(dataNFT.availability){%>
+    <h5>Sell Availability : 
+    <%if(dataNFT.availability){%>
       Yes
+      <br>
       <br>
       <% if(userData.userId) {%> 
         <a href="/nft/<%=dataNFT.id%>/buy" class="btn btn-primary">Buy this NFT</a>
