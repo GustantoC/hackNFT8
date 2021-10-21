@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     availability: DataTypes.BOOLEAN,
     UserId: DataTypes.STRING,
   }, {
+    hooks:{
+      beforeCreate:(nft,options)=>{
+        
+      }
+    },
     sequelize,
     modelName: 'NFT',
   });
