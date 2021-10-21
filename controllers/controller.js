@@ -1,4 +1,4 @@
-const {NFT, User} = require("../models/index");
+const { NFT, User, PriceHistory } = require('../models')
 const {Op} = require('sequelize')
 
 class Controller {
@@ -63,7 +63,7 @@ class Controller {
       })
   }
 
-  static changeNFTAvailability(req, res) {
+  static changeNFT(req, res) {
     console.log(req.session);
     console.log(req.body);
     let nftId = req.params.id
@@ -72,9 +72,11 @@ class Controller {
     if (check) {
       availabilityForm = true
     }
+    let priceForm = req.body.price
     console.log(availabilityForm);
     NFT.update({
-      availability: availabilityForm
+      availability: availabilityForm,
+      price: priceForm
     }, {
       where: {
         id: nftId
@@ -100,5 +102,46 @@ class Controller {
       res.send(err)
     })
     }
+
+
+  static buyNFT(req, res) {
+    let buyerId = req.session.userId
+    let nftId = Number(req.params.id)
+    if(buyerId){
+      NFT.update({
+        UserId: buyerId,
+        availability: false
+      },
+      {
+        where:{
+          id: nftId
+        }
+      })
+      .then(changeId =>{
+        return NFT.findByPk(nftId)
+      })
+      .then(data => {
+        let newPriceHistory = {
+          NFTId: data.id,
+          buyerId: buyerId,
+          priceAt: data.price,
+          time: new Date(),
+          createdAt: new Date(),
+          updatedAt: new Date()
+        }
+        console.log(newPriceHistory);
+        return PriceHistory.create(newPriceHistory)
+      })
+      .then(data => {
+        res.redirect(`/nft/${nftId}`)
+      })
+      .catch(err => {
+        res.send(err)
+      })
+    } else {
+      const err = "Please log in first"
+      res.redirect(`/login?err=${err}`)
+    }
+  }
 }
 module.exports = Controller;
