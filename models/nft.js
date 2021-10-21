@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       NFT.belongsTo(models.User,{foreignKey: "UserId"})
+      NFT.hasMany(models.PriceHistory,{foreignKey: "NFTId"})
     }
 
     convertPrice(){

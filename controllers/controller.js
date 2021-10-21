@@ -60,6 +60,7 @@ class Controller {
       .then(data => {
         dataNFT = data
         return PriceHistory.findAll({
+          include: { all: true },
           where:{
             NFTId: dataNFT.id
           }
