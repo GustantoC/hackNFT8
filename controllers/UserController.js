@@ -13,11 +13,13 @@ class UserController {
 
   static registerPost(req, res) {
     const { username, email, password, role } = req.body
+    console.log({ username, email, password, role });
     User.create({ username, email, password, role })
       .then(newUser => {
         res.redirect('/login')
       })
       .catch(err => {
+        console.log(err);
         res.send(err)
       })
   }
@@ -31,7 +33,7 @@ class UserController {
             req.session.userId = user.id
             req.session.role = user.role
             req.session.username = user.username
-            return res.redirect('/')
+            return res.redirect('/nft')
           } else {
             const err = "invalid username/password"
             return res.redirect(`/login?err=${err}`)

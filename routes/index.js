@@ -25,13 +25,19 @@ router.use(function(req, res, next) {
   next();
 });
 
-router.get('/', Controller.showHomePage)
+router.get('/', Controller.landingPage)
+router.get('/nfT', Controller.showHomePage)
+
 
 router.get('/register',UserController.registerForm)
 router.post('/register',UserController.registerPost)
 router.get('/login',UserController.loginForm)
 router.post('/login',UserController.loginPost)
 router.get('/logout',UserController.getLogout)
+
+router.get('/nft/add', Controller.addNft)
+router.post('/nft/add', Controller.postAddNft)
+
 
 router.get('/nft/:id',Controller.showNFTDetail)
 router.post('/nft/:id/edit',Controller.changeNFT)
