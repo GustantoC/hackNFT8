@@ -19,10 +19,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   NFT.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    imageUrl: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate:{
+        notEmpty: { msg:"name required"},
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      validate:{
+        notEmpty: { msg:"description required"},
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      validate:{
+        notEmpty: { msg:"price required"},
+      }
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+      validate:{
+        notEmpty: { msg:"imageUrl required"},
+      }
+    },
     availability: DataTypes.BOOLEAN,
     UserId: DataTypes.STRING,
   }, {
